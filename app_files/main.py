@@ -65,7 +65,7 @@ def get_df1():
     return df1
 
 def get_df2():
-    df2 = pd.Datafram(ag['data'])
+    df2 = pd.Dataframe(ag['data'])
     return df2
 
 df1 = get_df1()
