@@ -66,6 +66,7 @@ def get_df1():
 
 def get_df2():
     df2 = pd.DataFrame(ag['data'])
+    df2 = df2.drop(['Unnamed: '])
     return df2
 
 df1 = get_df1()
