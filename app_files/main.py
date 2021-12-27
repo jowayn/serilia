@@ -63,7 +63,7 @@ def get_df1():
     df_temp = response['data']
     df_temp = df_temp.astype(str)
     df1 = pd.DataFrame(df_temp)
-    df.replace('', np.nan, inplace=True)
+    df1.replace('', np.nan, inplace=True)
     df1 = df1.dropna()
     return df1
 
