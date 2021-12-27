@@ -58,7 +58,12 @@ st.subheader("Returned Data")
 st.dataframe(ag['data'])
 
 st.subheader("Concatenated Data")
-df1 = response['data']
-df2 = ag['data'
-df3 = pd.concat(df1,df2)
-st.write(df3)
+def get_df1():
+    df1 = response['data']
+    return df1
+
+def get_df2():
+    df2 = ag['data']
+    return df2
+
+st.write(pd.concat(df1,df2))
