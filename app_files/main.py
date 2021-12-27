@@ -66,4 +66,4 @@ def get_df2():
     df2 = ag['data']
     return df2
 
-st.write(pd.concat(df1,df2))
+st.dataframe(pd.concat(df1,df2))
