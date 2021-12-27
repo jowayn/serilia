@@ -61,21 +61,17 @@ st.subheader("Concatenated Data")
 
 def get_df1():
     df_temp = response['data']
+    df_temp = df_temp.astype(str)
     df1 = pd.DataFrame(df_temp)
     return df1
 
-def get_df4():
-    df_temp = response['data']
-    df4 = pd.DataFrame(df_temp)
-    return df4
-
 def get_df2():
     df2 = pd.DataFrame(ag['data'])
-    #df2 = df2.drop([''], 1)
+    df2 = df2.astype(str)
     return df2
 
 df1 = get_df1()
 df2 = get_df2()
 df4 = get_df4()
-df3 = pd.concat([df1,df4])
+df3 = pd.concat([df1,df2])
 st.dataframe(df3)
