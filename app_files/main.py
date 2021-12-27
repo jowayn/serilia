@@ -63,6 +63,7 @@ def get_df1():
     df_temp = response['data']
     df_temp = df_temp.astype(str)
     df1 = pd.DataFrame(df_temp)
+    df1 = df1.dropna()
     return df1
 
 def get_df2():
