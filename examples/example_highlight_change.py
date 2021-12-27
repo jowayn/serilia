@@ -33,8 +33,6 @@ function(e) {
 """)
 gb.configure_grid_options(onCellValueChanged=js) 
 go = gb.build()
-
-'''
 st.markdown("""
 ### JsCode injections
 Cell editions are highlighted here by attaching to ```onCellValueChanged``` of the grid, using JsCode injection
@@ -44,7 +42,6 @@ gb.configure_grid_options(onCellValueChanged=js)
 ag = AgGrid(data, gridOptions=gb.build(),  key='grid1', allow_unsafe_jscode=True, reload_data=False)
 ```
 """)
-'''
 
 ag = AgGrid(data, gridOptions=go,  key='grid1', allow_unsafe_jscode=True, reload_data=False)
 
