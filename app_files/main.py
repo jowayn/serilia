@@ -57,7 +57,7 @@ st.markdown("""
 ag = AgGrid(data, gridOptions=go,  key='grid1', allow_unsafe_jscode=True, reload_data=False)
 
 st.subheader("Returned Data")
-st.dataframe(ag['data'])
+st.dataframe(ag['data'],200,100)
 
 st.subheader("Concatenated Data")
 
