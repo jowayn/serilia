@@ -1,31 +1,54 @@
 import streamlit as st
+import numpy as np
 import pandas as pd
-from gsheetsdb import connect
 
-# Share the connector across all users connected to the app
-@st.experimental_singleton()
-def get_connector():
-    return connect()
+from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder, JsCode
 
-# Time to live: the maximum number of seconds to keep an entry in the cache
-TTL = 24 * 60 * 60
+@st.cache()
+def get_data_ex7():
+    df = pd.DataFrame(
+        np.random.randint(0, 100, 100).reshape(-1, 5), columns=list("abcde")
+    )
+    return df
 
-# Using `experimental_memo()` to memoize function executions
-@st.experimental_memo(ttl=TTL)
-def query_to_dataframe(_connector, query: str) -> pd.DataFrame:
-    rows = _connector.execute(query, headers=1)
-    dataframe = pd.DataFrame(list(rows))
-    return dataframe
+data = get_data_ex7()
 
-@st.experimental_memo(ttl=600)
-def get_data(_connector, gsheets_url) -> pd.DataFrame:
-    return query_to_dataframe(_connector, f'SELECT * FROM "{gsheets_url}"')
+gb = GridOptionsBuilder.from_dataframe(data)
+#make all columns editable
+gb.configure_columns(list('abcde'), editable=True)
 
-st.markdown(f"## 📝 Connecting to a public Google Sheet")
 
-gsheet_connector = get_connector()
-gsheets_url = st.secrets["gsheets"]["public_gsheets_url"]
+js = JsCode("""
+function(e) {
+    let api = e.api;
+    let rowIndex = e.rowIndex;
+    let col = e.column.colId;
+    
+    let rowNode = api.getDisplayedRowAtIndex(rowIndex);
+    api.flashCells({
+      rowNodes: [rowNode],
+      columns: [col],
+      flashDelay: 10000000000
+    });
+};
+""")
 
-data = get_data(gsheet_connector, gsheets_url)
-st.write("👇 Find below the data in the Google Sheet you provided in the secrets:")
-st.dataframe(data)
+gb.configure_grid_options(onCellValueChanged=js) 
+go = gb.build()
+st.markdown("""
+### JsCode injections
+Cell editions are highlighted here by attaching to ```onCellValueChanged``` of the grid, using JsCode injection
+```python
+js = JsCode(...)
+gb.configure_grid_options(onCellValueChanged=js) 
+ag = AgGrid(data, gridOptions=gb.build(),  key='grid1', allow_unsafe_jscode=True, reload_data=False)
+```
+""")
+
+ag = AgGrid(data, gridOptions=go,  key='grid1', allow_unsafe_jscode=True, reload_data=False)
+
+st.subheader("Returned Data")
+st.dataframe(ag['data'])
+
+st.subheader("Grid Options")
+st.write(go)
