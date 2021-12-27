@@ -16,7 +16,7 @@ with st.form('example form') as f:
     response = AgGrid(df_template, editable=True, fit_columns_on_grid_load=True)
     st.form_submit_button()
 
-st.write(response['data'])  
+st.write(response['test'])  
 
 
 
