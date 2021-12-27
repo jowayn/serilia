@@ -13,7 +13,7 @@ data = get_data_ex7()
 
 gb = GridOptionsBuilder.from_dataframe(data)
 #make all columns editable
-gb.configure_columns(list('abcde'), editable=True)
+gb.configure_columns(['srcip','sport','dstip','dsport','sttl','dttl','tcprtt','synack','ct_state_ttl','Label'], editable=True)
 
 
 js = JsCode("""
