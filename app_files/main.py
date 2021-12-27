@@ -70,5 +70,5 @@ def get_df2():
 
 df1 = get_df1()
 df2 = get_df2()
-df1.merge(df2,"left",left_on='srcip',right_on='srcip', indicator=True, validate='many_to_one')
+df3 = pd.concat([df1,df2])
 st.dataframe(df1)
