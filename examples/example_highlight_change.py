@@ -8,7 +8,7 @@ from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder
 df_template = pd.DataFrame(
     '',
     index=range(10),
-    columns=['srcip','sport','dstip','dsport','sttl','dttl','tcprtt','synack','ct_state_ttl','Label']
+    columns=['srcip','sport','dstip','dsport','Label']
 )
 
 with st.form('example form') as f:
