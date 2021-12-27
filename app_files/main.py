@@ -68,4 +68,4 @@ def get_df2():
     return df2
 df1 = get_df1()
 df2 = get_df2()
-st.dataframe(pd.concat(df1,df2))
+st.dataframe(pd.concat([df1,df2]))
