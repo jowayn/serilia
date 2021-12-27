@@ -65,5 +65,6 @@ def get_df1():
 def get_df2():
     df2 = ag['data']
     return df2
-
+df1 = get_df1
+df2 = get_df2
 st.dataframe(pd.concat(df1,df2))
