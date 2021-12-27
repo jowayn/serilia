@@ -4,7 +4,7 @@ import pandas as pd
 
 from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder, JsCode
 
-st.subheader("Serilia - Update IP Masterlist with Malicious IPs")
+st.header("Serilia - Update IP Masterlist with Malicious IPs")
 
 df_template = pd.DataFrame(
     '',
