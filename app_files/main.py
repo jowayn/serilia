@@ -4,6 +4,8 @@ import pandas as pd
 
 from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder, JsCode
 
+Serilia - Update IP Masterlist with Malicious IPs
+
 df_template = pd.DataFrame(
     '',
     index=range(10),
