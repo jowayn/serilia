@@ -14,7 +14,7 @@ df_template = pd.DataFrame(
 )
 
 with st.form('example form') as f:
-    st.header('Submit IP Entry')
+    st.subheader('Submit IP Entry')
     response = AgGrid(df_template, editable=True, fit_columns_on_grid_load=True)
     st.form_submit_button()
 
