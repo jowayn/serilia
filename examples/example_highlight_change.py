@@ -11,6 +11,7 @@ def get_data_ex7():
 
 data = get_data_ex7()
 
+st.subheader("Edit Data")
 gb = GridOptionsBuilder.from_dataframe(data)
 #make all columns editable
 gb.configure_columns(['srcip','sport','dstip','dsport','sttl','dttl','tcprtt','synack','ct_state_ttl','Label'], editable=True)
@@ -41,6 +42,3 @@ ag = AgGrid(data, gridOptions=go,  key='grid1', allow_unsafe_jscode=True, reload
 
 st.subheader("Returned Data")
 st.dataframe(ag['data'])
-
-st.subheader("Grid Options")
-st.write(go)
