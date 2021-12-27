@@ -31,9 +31,10 @@ function(e) {
 
 };
 """)
-'''
 gb.configure_grid_options(onCellValueChanged=js) 
 go = gb.build()
+
+'''
 st.markdown("""
 ### JsCode injections
 Cell editions are highlighted here by attaching to ```onCellValueChanged``` of the grid, using JsCode injection
