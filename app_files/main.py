@@ -59,7 +59,8 @@ st.dataframe(ag['data'])
 
 st.subheader("Concatenated Data")
 def get_df1():
-    df1 = response['data']
+    df_temp = response['data']
+    df1 = pd.DataFrame(df_temp)
     return df1
 
 def get_df2():
