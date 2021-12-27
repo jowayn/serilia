@@ -71,4 +71,4 @@ def get_df2():
 df1 = get_df1()
 df2 = get_df2()
 df3 = pd.concat([df1,df2])
-st.dataframe(df1)
+st.dataframe(df3)
