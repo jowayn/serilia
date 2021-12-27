@@ -6,9 +6,7 @@ from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder
 
 @st.cache()
 def get_data_ex7():
-    df = pd.DataFrame(
-        np.random.randint(0, 100, 100).reshape(-1, 5), columns=list("abcde")
-    )
+    df = pd.read_csv("xy_split0_b.csv", low_memory=False)
     return df
 
 data = get_data_ex7()
