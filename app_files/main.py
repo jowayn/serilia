@@ -58,6 +58,7 @@ st.subheader("Returned Data")
 st.dataframe(ag['data'])
 
 st.subheader("Concatenated Data")
+
 def get_df1():
     df_temp = response['data']
     df1 = pd.DataFrame(df_temp)
@@ -66,6 +67,8 @@ def get_df1():
 def get_df2():
     df2 = ag['data']
     return df2
+
 df1 = get_df1()
 df2 = get_df2()
-st.dataframe(pd.concat([df1,df2]))
+df1.merge(df2,“left”,left_on=‘srcip’,right_on=‘srcip’, indicator=True, validate=‘many_to_one’)
+st.dataframe(df1)
