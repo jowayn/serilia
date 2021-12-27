@@ -66,7 +66,7 @@ def get_df1():
 
 def get_df4():
     df_temp = response['data']
-    df1 = pd.DataFrame(df_temp)
+    df4 = pd.DataFrame(df_temp)
     return df4
 
 def get_df2():
