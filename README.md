@@ -1,4 +1,4 @@
-# serilia-update IP masterlist
+# serilia - Update IP masterlist
 
 [![Open in Streamlit][share_badge]][share_link] [![GitHub][github_badge]][github_link] [![PyPI][pypi_badge]][pypi_link] 
 
